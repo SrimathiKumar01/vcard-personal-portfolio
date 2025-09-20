@@ -1,3 +1,65 @@
+/* Highlight active project filter button */
+.filter-btn.active,
+.filter-item button.active {
+  background: #222 !important;
+  color: #ffd700 !important;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(34,34,34,0.15);
+  font-weight: 600;
+}
+/* Resume Button Styles */
+.resume-btn {
+  display: inline-block;
+  padding: 0.5em 1.5em;
+  background: linear-gradient(90deg, #ffd700 0%, #ff9800 100%);
+  color: #222;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 4px 16px rgba(255, 168, 0, 0.15);
+  transition: background 0.3s, color 0.3s, transform 0.2s, box-shadow 0.3s;
+  font-size: 1.05em;
+  margin: 0 0.5em;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.resume-btn:hover, .resume-btn:focus {
+  background: linear-gradient(90deg, #ff9800 0%, #ffd700 100%);
+  color: #fff;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 24px rgba(255, 168, 0, 0.25);
+  text-decoration: none;
+}
+
+.resume-btn.active, .navbar-link.active {
+  background: #222 !important;
+  color: #ffd700 !important;
+  box-shadow: 0 4px 16px rgba(34,34,34,0.25);
+  border-radius: 30px;
+}
+/* Larger LinkedIn icon in clients section */
+.clients-item ion-icon[name="logo-linkedin"] {
+  font-size: 2.2em;
+  width: 2.2em;
+  height: 2.2em;
+}
+/* Animated activity arrow styles */
+#activity-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 12px;
+}
+.activity-item {
+  display: none;
+  font-size: 1.15em;
+  margin-bottom: 6px;
+  color: #ffd700;
+  font-weight: 500;
+  text-align: center;
+}
 /*-----------------------------------*\
   #style.css
 \*-----------------------------------*/
@@ -249,10 +311,15 @@ article.active {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 30px;
+  width: 50px;
   height: 3px;
   background: var(--text-gradient-yellow);
   border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.article-title:hover::after {
+  width: 100px;
 }
 
 .has-scrollbar::-webkit-scrollbar {
@@ -417,17 +484,44 @@ main {
 
 .contact-title {
   color: var(--light-gray-70);
-  font-size: var(--fs-8);
-  text-transform: uppercase;
-  margin-bottom: 2px;
-}
-
-.contact-info :is(.contact-link, time, address) {
-  color: var(--white-2);
   font-size: var(--fs-7);
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  letter-spacing: 0.5px;
 }
 
-.contact-info address { font-style: normal; }
+.contact-link {
+  color: var(--white-2) !important;
+  font-size: var(--fs-6);
+  line-height: 1.4;
+  transition: all 0.3s ease;
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.contact-link:hover {
+  color: var(--orange-yellow-crayola) !important;
+  transform: translateX(3px);
+}
+
+.contact-info address {
+  font-style: normal;
+  color: var(--white-2);
+  font-size: var(--fs-6);
+  line-height: 1.4;
+}
+
+.contact-info time {
+  color: var(--white-2);
+  font-size: var(--fs-6);
+}
+
+.contact-item {
+  padding: 5px 0;
+}
 
 .social-list {
   display: flex;
@@ -440,11 +534,34 @@ main {
 
 .social-item .social-link {
   color: var(--light-gray-70);
-  font-size: 18px;
+  font-size: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 8px;
+  border-radius: 50%;
 }
 
+.social-item .social-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--bg-gradient-yellow-1);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all 0.3s ease;
+  z-index: -1;
+}
 
-.social-item .social-link:hover { color: var(--light-gray); }
+.social-item .social-link:hover {
+  color: var(--white-2);
+  transform: translateY(-3px);
+}
+
+.social-item .social-link:hover::after {
+  opacity: 1;
+  transform: scale(1);
+}
 
 
 
@@ -477,15 +594,40 @@ main {
 
 .navbar-link {
   color: var(--light-gray);
-  font-size: var(--fs-8);
-  padding: 20px 7px;
-  transition: color var(--transition-1);
+  font-size: var(--fs-7);
+  padding: 20px 15px;
+  transition: all 0.3s ease;
+  position: relative;
+  font-weight: var(--fw-500);
 }
 
-.navbar-link:hover,
-.navbar-link:focus { color: var(--light-gray-70); }
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--orange-yellow-crayola);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
 
-.navbar-link.active { color: var(--orange-yellow-crayola); }
+.navbar-link:hover {
+  color: var(--white-2);
+}
+
+.navbar-link:hover::after {
+  width: 40px;
+}
+
+.navbar-link.active {
+  color: var(--orange-yellow-crayola);
+}
+
+.navbar-link.active::after {
+  width: 40px;
+}
 
 
 
@@ -888,7 +1030,7 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 25%;
   padding: 12px 16px;
   border: 1px solid var(--jet);
   border-radius: 14px;
@@ -902,7 +1044,7 @@ main {
   background: var(--eerie-black-2);
   position: absolute;
   top: calc(100% + 6px);
-  width: 100%;
+  width: 25%;
   padding: 6px;
   border: 1px solid var(--jet);
   border-radius: 14px;
@@ -925,7 +1067,7 @@ main {
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
   text-transform: capitalize;
-  width: 100%;
+  width: 25%;
   padding: 8px 10px;
   border-radius: 8px;
 }
@@ -933,10 +1075,11 @@ main {
 .select-item button:hover { --eerie-black-2: hsl(240, 2%, 20%); }
 
 .project-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
   margin-bottom: 10px;
+  align-items: stretch;
 }
 
 .project-item { display: none; }
@@ -944,6 +1087,22 @@ main {
 .project-item.active {
   display: block;
   animation: scaleUp 0.25s ease forwards;
+  background: var(--bg-gradient-onyx);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
+  padding: 24px 18px 18px 18px;
+  margin: 0 0 0 0;
+}
+.project-description {
+  margin: 16px 0 0 10px;
+  color: #e0e0e0;
+  font-size: 1.01em;
+  line-height: 1.6;
+  background: rgba(30,30,40,0.7);
+  border-left: 4px solid #ffd700;
+  padding: 12px 18px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
 }
 
 @keyframes scaleUp {
@@ -956,11 +1115,12 @@ main {
 .project-img {
   position: relative;
   width: 100%;
-  height: 200px;
-  border-radius: 16px;
+  height: 100px;
+  border-radius: 12px;
   overflow: hidden;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
+
 
 .project-img::before {
   content: "";

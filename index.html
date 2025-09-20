@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>vCard - Personal Portfolio</title>
+  <title>Srimathi - Personal Portfolio</title>
 
   <!--
     - favicon
@@ -16,6 +16,9 @@
     - custom css link
   -->
   <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/form.css">
+  <link rel="stylesheet" href="./assets/css/project-cards.css">
+  <link rel="stylesheet" href="./assets/css/animations.css">
 
   <!--
     - google font link
@@ -42,13 +45,13 @@
       <div class="sidebar-info">
 
         <figure class="avatar-box">
-          <img src="./assets/images/my-avatar.png" alt="Richard hanrick" width="80">
+          <img src=" data:image/jpeg;base64,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" alt="Srimathi Kumar" width="80">
         </figure>
 
         <div class="info-content">
-          <h1 class="name" title="Richard hanrick">Richard hanrick</h1>
+          <h1 class="name" title=" Srimathi Kumar">Srimathi Kumar</h1>
 
-          <p class="title">Web developer</p>
+          <p class="title">Software developer</p>
         </div>
 
         <button class="info_more-btn" data-sidebar-btn>
@@ -74,7 +77,7 @@
             <div class="contact-info">
               <p class="contact-title">Email</p>
 
-              <a href="mailto:richard@example.com" class="contact-link">richard@example.com</a>
+              <a href="mailto:kumarsrimathi4@gmail.com?subject=Contact%20from%20Portfolio&body=Hi%20Srimathi%2C%0D%0A" class="contact-link" aria-label="Send email to kumarsrimathi4@gmail.com">kumarsrimathi4@gmail.com</a>
             </div>
 
           </li>
@@ -88,7 +91,7 @@
             <div class="contact-info">
               <p class="contact-title">Phone</p>
 
-              <a href="tel:+12133522795" class="contact-link">+1 (213) 352-2795</a>
+              <a href="tel:+917604973522" class="contact-link">+91 7604973522</a>
             </div>
 
           </li>
@@ -102,7 +105,7 @@
             <div class="contact-info">
               <p class="contact-title">Birthday</p>
 
-              <time datetime="1982-06-23">June 23, 1982</time>
+              <time datetime="2006-03-01" class="contact-link">March 01, 2006</time>
             </div>
 
           </li>
@@ -116,7 +119,7 @@
             <div class="contact-info">
               <p class="contact-title">Location</p>
 
-              <address>Sacramento, California, USA</address>
+              <address class="contact-link">Harur, Dharmapuri, Tamil Nadu</address>
             </div>
 
           </li>
@@ -126,22 +129,22 @@
         <div class="separator"></div>
 
         <ul class="social-list">
+ 
 
           <li class="social-item">
-            <a href="#" class="social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
+            <a href="https://www.linkedin.com/in/srimathi-kumar" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
-            <a href="#" class="social-link">
-              <ion-icon name="logo-twitter"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="#" class="social-link">
+            <a href="https://www.instagram.com/srimathi_kumar_136" class="social-link">
               <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+          <li class="social-item">
+            <a href="https://github.com/SrimathiKumar01" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
             </a>
           </li>
 
@@ -170,19 +173,15 @@
         <ul class="navbar-list">
 
           <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
+            <button class="navbar-link " data-nav-link>About</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
+            <a href="C:/Users/kumar/Downloads/SrimathiKumar.pdf" target="_blank" class="navbar-link">Resume</a>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Portfolio</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Blog</button>
+            <button class="navbar-link" data-nav-link>Projects</button>
           </li>
 
           <li class="navbar-item">
@@ -209,17 +208,12 @@
 
         <section class="about-text">
           <p>
-            I'm Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print media.
-            I enjoy
-            turning complex problems into simple, beautiful and intuitive designs.
+            I am a B.Tech IT student passionate about coding and technology. I am currently learning Java and exploring SQL and PostgreSQL, with a keen interest in solving logical problems and building practical projects. My goal is to work in a top product-based company, where I can grow my skills and contribute to impactful solutions. I am motivated, curious, and always eager to learn new things in the world of technology
           </p>
 
           <p>
             My job is to build your website so that it is functional and user-friendly but at the same time attractive.
-            Moreover, I
-            add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring
-            across your
-            message and identity in the most creative way. I created web design for many famous brand companies.
+            Moreover,Apart from coding some other activites that i have love to do like watching webseries Playing Batmitton and listening music.
           </p>
         </section>
 
@@ -245,7 +239,7 @@
                 <h4 class="h4 service-item-title">Web design</h4>
 
                 <p class="service-item-text">
-                  The most modern and high-quality design made at a professional level.
+                  The most modern design made at a professional level.
                 </p>
               </div>
 
@@ -261,7 +255,7 @@
                 <h4 class="h4 service-item-title">Web development</h4>
 
                 <p class="service-item-text">
-                  High-quality development of sites at the professional level.
+                  Quality development of sites at the professional level.
                 </p>
               </div>
 
@@ -274,7 +268,7 @@
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Mobile apps</h4>
+                <h4 class="h4 service-item-title">Data Analysis</h4>
 
                 <p class="service-item-text">
                   Professional development of applications for iOS and Android.
@@ -283,128 +277,13 @@
 
             </li>
 
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Photography</h4>
-
-                <p class="service-item-text">
-                  I make high-quality photos of any category at a professional level.
-                </p>
-              </div>
-
-            </li>
+            
 
           </ul>
 
         </section>
 
-
-        <!--
-          - testimonials
-        -->
-
-        <section class="testimonials">
-
-          <h3 class="h3 testimonials-title">Testimonials</h3>
-
-          <ul class="testimonials-list has-scrollbar">
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel lewis</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica miller</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily evans</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry william</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-        </section>
+ 
 
 
         <!--
@@ -423,7 +302,7 @@
 
             <div class="modal-img-wrapper">
               <figure class="modal-avatar-box">
-                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
+                <img src="./assets/images/avatar-1.png" alt=" Srimathi Kumar" width="80" data-modal-img>
               </figure>
 
               <img src="./assets/images/icon-quote.svg" alt="quote icon">
@@ -431,17 +310,12 @@
 
             <div class="modal-content">
 
-              <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
+              <h4 class="h3 modal-title" data-modal-title> Srimathi Kumar</h4>
 
               <time datetime="2021-06-14">14 June, 2021</time>
 
               <div data-modal-text>
-                <p>
-                  Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                  lot of experience
-                  and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                  consectetur adipiscing
-                  elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                <p> 
                 </p>
               </div>
 
@@ -449,266 +323,21 @@
 
           </section>
 
-        </div>
-
-
-        <!--
-          - clients
+        </div><!--resume
         -->
+<li class="navbar-item">
+  <a href="C:\Users\kumar\Downloads\SrimathiKumar.pdf" target="_blank" class="navbar-link">Resume</a>
+</li>
 
-        <section class="clients">
+<!-- portfolio-->
 
-          <h3 class="h3 clients-title">Clients</h3>
-
-          <ul class="clients-list has-scrollbar">
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-1-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-2-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-3-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-4-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-5-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-6-color.png" alt="client logo">
-              </a>
-            </li>
-
-          </ul>
-
-        </section>
 
       </article>
 
-
-
-
-
-      <!--
-        - #RESUME
-      -->
-
-      <article class="resume" data-page="resume">
+      <article class="portfolio" data-page="projects">
 
         <header>
-          <h2 class="h2 article-title">Resume</h2>
-        </header>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Education</h3>
-          </div>
-
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">University school of the arts</h4>
-
-              <span>2007 — 2008</span>
-
-              <p class="timeline-text">
-                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-                quas molestias
-                exceptur.
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">New york academy of art</h4>
-
-              <span>2006 — 2007</span>
-
-              <p class="timeline-text">
-                Ratione voluptatem sequi nesciunt, facere quisquams facere menda ossimus, omnis voluptas assumenda est
-                omnis..
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">High school of art and design</h4>
-
-              <span>2002 — 2004</span>
-
-              <p class="timeline-text">
-                Duis aute irure dolor in reprehenderit in voluptate, quila voluptas mag odit aut fugit, sed consequuntur
-                magni dolores
-                eos.
-              </p>
-
-            </li>
-
-          </ol>
-
-        </section>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Experience</h3>
-          </div>
-
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Creative director</h4>
-
-              <span>2015 — Present</span>
-
-              <p class="timeline-text">
-                Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti, quos dolores et qvuas
-                molestias
-                exceptur.
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Art director</h4>
-
-              <span>2013 — 2015</span>
-
-              <p class="timeline-text">
-                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-                quas molestias
-                exceptur.
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Web designer</h4>
-
-              <span>2010 — 2013</span>
-
-              <p class="timeline-text">
-                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-                quas molestias
-                exceptur.
-              </p>
-
-            </li>
-
-          </ol>
-
-        </section>
-
-        <section class="skill">
-
-          <h3 class="h3 skills-title">My skills</h3>
-
-          <ul class="skills-list content-card">
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Web design</h5>
-                <data value="80">80%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Graphic design</h5>
-                <data value="70">70%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Branding</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">WordPress</h5>
-                <data value="50">50%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 50%;"></div>
-              </div>
-
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article>
-
-
-
-
-
-      <!--
-        - #PORTFOLIO
-      -->
-
-      <article class="portfolio" data-page="portfolio">
-
-        <header>
-          <h2 class="h2 article-title">Portfolio</h2>
+          <h2 class="h2 article-title">Projects</h2>
         </header>
 
         <section class="projects">
@@ -716,19 +345,16 @@
           <ul class="filter-list">
 
             <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
+              <button class="filter-btn active" data-filter-btn>All</button>
             </li>
-
             <li class="filter-item">
-              <button data-filter-btn>Web design</button>
+              <button class="filter-btn" data-filter-btn>AI and CV</button>
             </li>
-
             <li class="filter-item">
-              <button data-filter-btn>Applications</button>
+              <button class="filter-btn" data-filter-btn>Applications</button>
             </li>
-
             <li class="filter-item">
-              <button data-filter-btn>Web development</button>
+              <button class="filter-btn" data-filter-btn>Web Development</button>
             </li>
 
           </ul>
@@ -750,17 +376,14 @@
               <li class="select-item">
                 <button data-select-item>All</button>
               </li>
-
               <li class="select-item">
-                <button data-select-item>Web design</button>
+                <button data-select-item>AI and CV</button>
               </li>
-
               <li class="select-item">
                 <button data-select-item>Applications</button>
               </li>
-
               <li class="select-item">
-                <button data-select-item>Web development</button>
+                <button data-select-item>Web Development</button>
               </li>
 
             </ul>
@@ -769,165 +392,75 @@
 
           <ul class="project-list">
 
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
+            <li class="project-item active" data-filter-item data-category="ai and cv">
+              <a href="https://github.com/SrimathiKumar01/drowsy-detection.git">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-
-                  <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
+                  <img src="C:\Users\kumar\Downloads\download (5).jpeg" alt="Drowsiness detection" loading="lazy">
                 </figure>
-
-                <h3 class="project-title">Finance</h3>
-
-                <p class="project-category">Web development</p>
-
+                <h3 class="project-title">Drowsiness Detection</h3>
+                <div class="project-description">
+                  <p>This project uses computer vision and deep learning to detect driver drowsiness in real time.</p>
+                  <p>It analyzes eye and facial features from a webcam feed to identify signs of fatigue.</p>
+                  <p>When drowsiness is detected, the system triggers an alert to prevent accidents.</p>
+                  <p>Technologies: Python, OpenCV, Keras, and real-time video processing.</p>
+                </div>
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
+            <li class="project-item active" data-filter-item data-category="applications">
+              <a href="https://github.com/SrimathiKumar01/Hospital-Management-System.git">  
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-
-                  <img src="./assets/images/project-2.png" alt="orizon" loading="lazy">
+                  <img src="C:\Users\kumar\Downloads\download (7).jpeg" alt="Hospital Management System" loading="lazy">
                 </figure>
-
-                <h3 class="project-title">Orizon</h3>
-
-                <p class="project-category">Web development</p>
-
+                <h3 class="project-title">Hospital Management System</h3>
+                <div class="project-description">
+                  <p>A web-based system to manage hospital operations efficiently.</p>
+                  <p>Features patient registration, appointment scheduling, and billing.</p>
+                  <p>Enables doctors and staff to access and update records securely.</p>
+                  <p>Built with Python, Django, and Bootstrap for responsive design.</p>
+                </div>
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
+            <li class="project-item active" data-filter-item data-category="ai and cv">
+              <a href="https://github.com/SrimathiKumar01/bistro_managementt">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-
-                  <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
+                  <img src= "C:\Users\kumar\Downloads\download (6).jpeg" alt="Brain-tumor" loading="lazy">
                 </figure>
-
-                <h3 class="project-title">Fundo</h3>
-
-                <p class="project-category">Web design</p>
-
+                <h3 class="project-title">Brain-tumor Detection</h3>
+                <div class="project-description">
+                  <p>Detects brain tumors from MRI images using image processing and AI.</p>
+                  <p>Automates tumor segmentation and classification for medical analysis.</p>
+                  <p>Improves diagnostic accuracy and supports radiologists in decision-making.</p>
+                  <p>Developed with Python, OpenCV, and deep learning frameworks.</p>
+                </div>
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="applications">
+            <li class="project-item active" data-filter-item data-category="web development">
               <a href="#">
-
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-
-                  <img src="./assets/images/project-4.png" alt="brawlhalla" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Brawlhalla</h3>
-
-                <p class="project-category">Applications</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
-                </figure>
-
-                <h3 class="project-title">DSM.</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">MetaSpark</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Summary</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Task Manager</h3>
-
-                <p class="project-category">Applications</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
                   <img src="./assets/images/project-9.png" alt="arrival" loading="lazy">
                 </figure>
-
                 <h3 class="project-title">Arrival</h3>
-
-                <p class="project-category">Web development</p>
-
+                <div class="project-description">
+                  <p>A modern web application for seamless event or product arrivals.</p>
+                  <p>Showcases real-time updates, notifications, and user-friendly dashboards.</p>
+                  <p>Responsive design ensures accessibility across all devices.</p>
+                  <p>Created using HTML, CSS, JavaScript, and backend integration.</p>
+                </div>
               </a>
             </li>
 
@@ -1155,7 +688,7 @@
 
           <h3 class="h3 form-title">Contact Form</h3>
 
-          <form action="#" class="form" data-form>
+          <form action="javascript:void(0);" class="form" data-form onsubmit="handleFormSubmit(event)">
 
             <div class="input-wrapper">
               <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>

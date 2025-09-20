@@ -79,38 +79,38 @@ for (let i = 0; i < selectItems.length; i++) {
 const filterItems = document.querySelectorAll("[data-filter-item]");
 
 const filterFunc = function (selectedValue) {
-
+  selectedValue = selectedValue.toLowerCase().trim();
+  
   for (let i = 0; i < filterItems.length; i++) {
-
     if (selectedValue === "all") {
       filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
-      filterItems[i].classList.add("active");
     } else {
-      filterItems[i].classList.remove("active");
+      const itemCategory = filterItems[i].dataset.category.toLowerCase().trim();
+      if (itemCategory === selectedValue) {
+        filterItems[i].classList.add("active");
+      } else {
+        filterItems[i].classList.remove("active");
+      }
     }
-
   }
-
 }
 
+// Show all projects by default on page load
+document.addEventListener("DOMContentLoaded", function() {
+  filterFunc("all");
+});
+
 // add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0];
-
+let lastClickedBtn = null;
 for (let i = 0; i < filterBtn.length; i++) {
-
   filterBtn[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
+    let selectedValue = this.innerText.toLowerCase().trim();
     selectValue.innerText = this.innerText;
     filterFunc(selectedValue);
-
-    lastClickedBtn.classList.remove("active");
+    if (lastClickedBtn) lastClickedBtn.classList.remove("active");
     this.classList.add("active");
     lastClickedBtn = this;
-
   });
-
 }
 
 
@@ -123,15 +123,36 @@ const formBtn = document.querySelector("[data-form-btn]");
 // add event to all form input field
 for (let i = 0; i < formInputs.length; i++) {
   formInputs[i].addEventListener("input", function () {
-
     // check form validation
     if (form.checkValidity()) {
       formBtn.removeAttribute("disabled");
     } else {
       formBtn.setAttribute("disabled", "");
     }
-
   });
+}
+
+// Handle form submission
+function handleFormSubmit(event) {
+  event.preventDefault();
+  
+  const formData = new FormData(form);
+  const name = formData.get('fullname');
+  const email = formData.get('email');
+  const message = formData.get('message');
+  
+  // Create mailto link with form data
+  const mailtoLink = `mailto:kumarsrimathi4@gmail.com?subject=Contact from ${name}&body=From: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+  
+  // Open email client
+  window.location.href = mailtoLink;
+  
+  // Reset form
+  form.reset();
+  formBtn.setAttribute("disabled", "");
+  
+  // Show success message
+  alert("Thank you for your message! Your email client will open now.");
 }
 
 
@@ -139,21 +160,73 @@ for (let i = 0; i < formInputs.length; i++) {
 // page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
+const resumeBtn = document.getElementById("resume-btn");
+const myResumeBtn = document.getElementById("my-resume-btn");
 
-// add event to all nav link
-for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
+function clearActiveStates() {
+  navigationLinks.forEach(link => link.classList.remove("active"));
+  if (resumeBtn) resumeBtn.classList.remove("active");
+  if (myResumeBtn) myResumeBtn.classList.remove("active");
+}
 
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
+navigationLinks.forEach((link, i) => {
+  link.addEventListener("click", function () {
+    const clickedText = this.textContent.trim().toLowerCase();
+    pages.forEach((page, j) => {
+      const pageName = (page.dataset.page || '').trim().toLowerCase();
+      if ((pageName === clickedText) || (pageName === 'portfolio' && clickedText === 'projects')) {
+        page.classList.add("active");
+        clearActiveStates();
         navigationLinks[i].classList.add("active");
         window.scrollTo(0, 0);
       } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
+        page.classList.remove("active");
       }
+    });
+    // Animate activities if About is clicked
+    if (clickedText === "about") {
+      const items = document.querySelectorAll("#activity-list .activity-item");
+      let k = 0;
+      items.forEach(item => item.style.display = "none");
+      function showNext() {
+        if (k < items.length) {
+          items[k].style.display = "block";
+          k++;
+          setTimeout(showNext, 900);
+        }
+      }
+      showNext();
     }
+  });
+});
 
+if (resumeBtn) {
+  resumeBtn.addEventListener("click", function () {
+    clearActiveStates();
+    resumeBtn.classList.add("active");
   });
 }
+if (myResumeBtn) {
+  myResumeBtn.addEventListener("click", function () {
+    clearActiveStates();
+    myResumeBtn.classList.add("active");
+  });
+}
+// Animated arrow for activities
+// Initial About animation on page load
+document.addEventListener("DOMContentLoaded", function() {
+  const items = document.querySelectorAll("#activity-list .activity-item");
+  let i = 0;
+  items.forEach(item => item.style.display = "none");
+  function showNext() {
+    if (i < items.length) {
+      items[i].style.display = "block";
+      i++;
+      setTimeout(showNext, 900);
+    }
+  }
+  showNext();
+});
+
+// add event to all nav link
+// (Removed duplicate navigation handler)

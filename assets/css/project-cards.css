@@ -1,0 +1,98 @@
+/* Project Card Styles */
+.project-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-img {
+  overflow: hidden;
+  border-radius: 12px;
+  position: relative;
+}
+
+.project-img img {
+  transition: transform 0.5s ease;
+}
+
+.project-item:hover .project-img img {
+  transform: scale(1.05);
+}
+
+.project-item-icon-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: var(--eerie-black-1);
+  padding: 20px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.project-item:hover .project-item-icon-box {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.project-title {
+  margin-top: 15px;
+  font-size: var(--fs-5);
+  font-weight: var(--fw-500);
+  color: var(--white-2);
+  transition: color 0.3s ease;
+}
+
+.project-item:hover .project-title {
+  color: var(--orange-yellow-crayola);
+}
+
+.project-description {
+  margin-top: 10px;
+  font-size: var(--fs-6);
+  color: var(--light-gray);
+  line-height: 1.6;
+}
+
+.project-description p {
+  margin-bottom: 8px;
+}
+
+/* Project category filter buttons */
+.filter-item button {
+  position: relative;
+  color: var(--light-gray);
+  font-size: var(--fs-6);
+  padding: 8px 20px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.filter-item button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--orange-yellow-crayola);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.filter-item button:hover {
+  color: var(--white-2);
+}
+
+.filter-item button:hover::after {
+  width: 70%;
+}
+
+.filter-item button.active {
+  background: var(--border-gradient-onyx);
+  color: var(--orange-yellow-crayola);
+}
